@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[PLACEHOLDER: Título de tu sitio web]</title>
+    
+    <style>
+        /* ==========================================================================
+           NO TOCAR DESDE AQUÍ: Configuración base y reset CSS para garantizar accesibilidad y diseño adaptativo.
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2D3748;
+            background-color: #F7FAFC;
+        }
+
+        /* Contenedor principal responsive */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Botones táctiles accesibles (mínimo 44px de alto) */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-primary {
+            background-color: #2B6CB0;
+            color: #FFFFFF;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            background-color: #1A365D;
+            color: #FFFFFF;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #1A365D;
+            border-color: #1A365D;
+        }
+
+        .btn-secondary:hover, .btn-secondary:focus {
+            background-color: #1A365D;
+            color: #FFFFFF;
+        }
+
+        /* Navegación y Encabezado */
+        header {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #E2E8F0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1A365D;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2D3748;
+            font-weight: 500;
+            padding: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #2B6CB0;
+        }
+
+        /* Secciones */
+        section {
+            padding: 3.5rem 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            color: #1A365D;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #4A5568;
+            max-width: 600px;
+            margin: 0 auto 2.5rem auto;
+            font-size: 1.1rem;
+        }
+
+        /* Hero / Inicio */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(180deg, #FFFFFF 0%, #F7FAFC 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.25rem;
+            color: #1A365D;
+            margin-bottom: 1.25rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #4A5568;
+            max-width: 700px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* Servicios / Tarjetas */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            color: #2B6CB0;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            color: #1A365D;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Sobre mí */
+        .about-content {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .about-avatar {
+            width: 96px;
+            height: 96px;
+            background-color: #E2E8F0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2B6CB0;
+        }
+
+        /* Contacto */
+        .contact-box {
+            background-color: #1A365D;
+            color: #FFFFFF;
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        .contact-box p {
+            color: #E2E8F0;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Pie de página */
+        footer {
+            background-color: #FFFFFF;
+            border-top: 1px solid #E2E8F0;
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries para Pantallas Mayores (Tablet y Ordenador) */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .grid-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .about-content {
+                flex-direction: row;
+                padding: 3rem;
+            }
+
+            .contact-box {
+                padding: 3.5rem 2rem;
+            }
+        }
+
+        /* ==========================================================================
+           EDITAR AQUÍ (OPCIONAL): Estilos personalizables de color o tipografía adicional.
+           ========================================================================== */
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================================
+         EDITAR AQUÍ: Contenidos editables de la página web
+         ========================================================================== -->
+
+    <!-- Encabezado y Navegación -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#inicio" class="logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
+                    </svg>
+                    <span>[PLACEHOLDER: Nombre del Proyecto]</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#sobre-mi">Sobre mí</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Sección 1: Inicio / Portada -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h1>[PLACEHOLDER: Titular Principal Atractivo y Directo]</h1>
+            <p>[PLACEHOLDER: Descripción breve en dos frases sobre el valor que ofrece tu proyecto o servicio a tus clientes].</p>
+            <a href="#contacto" class="btn btn-primary">[PLACEHOLDER: Botón de Contacto Principal]</a>
+        </div>
+    </section>
+
+    <!-- Sección 2: Qué ofrezco -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title">Qué ofrezco</h2>
+            <p class="section-subtitle">[PLACEHOLDER: Breve introducción a tus servicios principales]</p>
+            
+            <div class="grid-cards">
+                <!-- Tarjeta 1 -->
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <h3>[PLACEHOLDER: Servicio 1]</h3>
+                    <p>[PLACEHOLDER: Explicación breve de lo que incluye este primer servicio y cómo ayuda al visitante].</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <h3>[PLACEHOLDER: Servicio 2]</h3>
+                    <p>[PLACEHOLDER: Explicación breve de lo que incluye este segundo servicio y sus ventajas].</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="card">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    <h3>[PLACEHOLDER: Servicio 3]</h3>
+                    <p>[PLACEHOLDER: Explicación breve del tercer servicio destacado o propuesta especial].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Sobre mí -->
+    <section id="sobre-mi">
+        <div class="container">
+            <h2 class="section-title">Sobre mí</h2>
+            <div class="about-content">
+                <div class="about-avatar">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <h3>[PLACEHOLDER: Tu Nombre o Nombre del Equipo]</h3>
+                    <p>[PLACEHOLDER: Escribe aquí tu presentación personal o la historia detrás de tu proyecto. Explica tu experiencia, visión y por qué te apasiona ayudar a tus usuarios de forma cercana y transparente].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 4: Contacto -->
+    <section id="contacto">
+        <div class="container">
+            <div class="contact-box">
+                <h2>¿Hablamos de tu proyecto?</h2>
+                <p>[PLACEHOLDER: Frase de invitación para que el usuario te escriba directamente].</p>
+                
+                <a href="mailto:[PLACEHOLDER:tu-correo@ejemplo.com]" class="btn btn-primary" style="background-color: #FFFFFF; color: #1A365D;">
+                    Enviar correo directo
+                </a>
+
+                <div class="contact-info">
+                    <a href="mailto:[PLACEHOLDER:tu-correo@ejemplo.com]" class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <span>[PLACEHOLDER: tu-correo@ejemplo.com]</span>
+                    </a>
+                    <a href="tel:[PLACEHOLDER:+34000000000]" class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                        <span>[PLACEHOLDER: +34 000 00 00 00]</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================================================
+         NO TOCAR DESDE AQUÍ: Pie de página y JavaScript
+         ========================================================================== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 [PLACEHOLDER: Nombre del Proyecto]. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================================================
+        // NO TOCAR DESDE AQUÍ: Funcionalidades interactivas sencillas
+        // ==========================================================================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Desplazamiento suave adicional para enlaces internos
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        // ==========================================================================
+        // EDITAR AQUÍ (OPCIONAL): Código JavaScript personalizado
+        // ==========================================================================
+    </script>
+</body>
+</html>
